@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMESLOUHT VIBES - Patrimoine Culturel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="logo-tameslouht.jpg" alt="TAMESLOUHT VIBES" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                TAMESLOUHT VIBES
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('accueil')" class="active">Accueil</a></li>
+                <li><a href="#" onclick="showSection('documentaire')">Documentaire</a></li>
+                <li><a href="#" onclick="showSection('galerie')">Galerie</a></li>
+                <li><a href="#" onclick="showSection('itineraires')">Itinéraires</a></li>
+                <li><a href="#" onclick="showSection('store')">Store</a></li>
+                <li><a href="#" onclick="showSection('agenda')">Agenda</a></li>
+            </ul>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Section Accueil -->
+        <section id="accueil" class="section active">
+            <div class="hero">
+                <h1>Bienvenue à Tameslouht</h1>
+                <p>Découvrez le patrimoine culturel unique de notre commune et vivez une expérience authentique</p>
+                <a href="#" class="btn" onclick="showSection('documentaire')">Découvrir le Documentaire</a>
+            </div>
+
+            <div class="grid grid-3" style="margin-top: 3rem;">
+                <div class="card">
+                    <h3>🎬 Documentaire</h3>
+                    <p>Plongez dans l'histoire et la culture de Tameslouht à travers notre documentaire exclusif.</p>
+                    <a href="#" class="btn" onclick="showSection('documentaire')">Regarder</a>
+                </div>
+                <div class="card">
+                    <h3>📸 Galerie Participative</h3>
+                    <p>Partagez vos plus belles photos et découvrez Tameslouht à travers les yeux des habitants.</p>
+                    <a href="#" class="btn" onclick="showSection('galerie')">Explorer</a>
+                </div>
+                <div class="card">
+                    <h3>🗺️ Circuits Touristiques</h3>
+                    <p>Explorez nos itinéraires thématiques pour une découverte complète de la région.</p>
+                    <a href="#" class="btn" onclick="showSection('itineraires')">Découvrir</a>
+                </div>
+            </div>
+        </section>
+
+       <!-- Section Documentaire -->
+<section id="documentaire" class="section">
+    <h1>🎬 Mémoire Culturelle de Tameslouht</h1>
+
+    <div class="video-container">
+        <video id="documentaryVideo" width="100%" controls style="border-radius: 10px;">
+            <source src="memoire-tameslouht1.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéo.
+        </video>
+       
+    </div>
+    
+    <div class="grid grid-2" style="margin-top: 2rem;">
+        <div class="card">
+            <h3>🎥 Bandes-annonces</h3>
+            <p>Aperçu des moments forts du documentaire</p>
+            <button class="btn" onclick="showTrailer()">Voir la bande-annonce</button>
+        </div>
+        <div class="card">
+            <h3>📝 Synopsis</h3>
+            <p>Un voyage à travers l'histoire, les traditions et l'art de vivre à Tameslouht. Découvrez les témoignages des habitants et l'évolution de cette commune riche en patrimoine.</p>
+        </div>
+    </div>
+</section>
+
+        <!-- Section Galerie -->
+        <section id="galerie" class="section">
+            <h1>📸 Galerie Photo Participative</h1>
+            <p>Partagez vos photos de Tameslouht et découvrez la commune à travers différents regards.</p>
+            
+            <div class="upload-area" onclick="document.getElementById('photoUpload').click()">
+                <h3>📤 Partager une photo</h3>
+                <p>Cliquez ici pour ajouter vos photos de Tameslouht</p>
+                <input type="file" id="photoUpload" accept="image/*" style="display: none;" onchange="uploadPhoto(this)">
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+                <label>Filtrer par catégorie :</label>
+                <select onchange="filterPhotos(this.value)">
+                    <option value="all">Toutes les photos</option>
+                    <option value="architecture">Architecture</option>
+                    <option value="nature">Nature</option>
+                    <option value="artisanat">Artisanat</option>
+                    <option value="traditions">Traditions</option>
+                    <option value="paysages">Paysages</option>
+                </select>
+            </div>
+
+            <div class="photo-gallery" id="photoGallery">
+                <div class="photo-item" data-category="architecture">
+                    <div>🏛️ Architecture traditionnelle</div>
+                </div>
+                <div class="photo-item" data-category="nature">
+                    <div>🌿 Paysages naturels</div>
+                </div>
+                <div class="photo-item" data-category="artisanat">
+                    <div>🏺 Artisanat local</div>
+                </div>
+                <div class="photo-item" data-category="traditions">
+                    <div>🎭 Traditions culturelles</div>
+                </div>
+                <div class="photo-item" data-category="paysages">
+                    <div>🌅 Couchers de soleil</div>
+                </div>
+                <div class="photo-item" data-category="architecture">
+                    <div>🕌 Patrimoine religieux</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Itinéraires -->
+        <section id="itineraires" class="section">
+            <h1>🗺️ Itinéraires Touristiques</h1>
+            <p>Découvrez Tameslouht à travers nos circuits thématiques soigneusement conçus.</p>
+
+            <div class="form-group">
+                <label>Choisir un thème :</label>
+                <select onchange="selectItinerary(this.value)">
+                    <option value="">Sélectionner un circuit</option>
+                    <option value="artisanat">Circuit Artisanat & Savoir-faire</option>
+                    <option value="soufisme">Circuit Spirituel & Soufisme</option>
+                    <option value="nature">Circuit Nature & Randonnée</option>
+                    <option value="culture">Circuit Culturel & Historique</option>
+                    <option value="gastronomie">Circuit Gastronomique</option>
+                </select>
+            </div>
+
+            <div class="map-container" id="mapContainer">
+                🗺️ Carte interactive des itinéraires
+                <br><small>Sélectionnez un circuit pour voir l'itinéraire détaillé</small>
+            </div>
+
+            <div class="grid grid-2" style="margin-top: 2rem;">
+                <div class="card">
+                    <h3>⏱️ Durée recommandée</h3>
+                    <p id="duration">Sélectionnez un circuit</p>
+                </div>
+                <div class="card">
+                    <h3>🎯 Points d'intérêt</h3>
+                    <p id="points">Sélectionnez un circuit</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1rem;">
+                <h3>📋 Fiche pratique</h3>
+                <div id="practicalInfo">
+                    <p>Choisissez un itinéraire pour obtenir toutes les informations pratiques :</p>
+                    <ul>
+                        <li>Horaires d'ouverture</li>
+                        <li>Tarifs et réservations</li>
+                        <li>Conseils vestimentaires</li>
+                        <li>Matériel recommandé</li>
+                    </ul>
+                </div>
+                <button class="btn" onclick="downloadPDF()" id="downloadBtn" style="margin-top: 1rem; display: none;">
+                    📄 Télécharger la fiche PDF
+                </button>
+            </div>
+        </section>
+
+        <!-- Section Store -->
+        <section id="store" class="section">
+            <h1>🛍️ Store Artisanal</h1>
+            <p>Découvrez et achetez les produits artisanaux authentiques de Tameslouht.</p>
+
+            <div class="form-group">
+                <label>Filtrer les produits :</label>
+                <select onchange="filterProducts(this.value)">
+                    <option value="all">Tous les produits</option>
+                    <option value="poterie">Poterie</option>
+                    <option value="tapis">Tapis & Tissage</option>
+                    <option value="bijoux">Bijoux traditionnels</option>
+                    <option value="huiles">Huiles & Cosmétiques</option>
+                    <option value="alimentaire">Produits alimentaires</option>
+                </select>
+            </div>
+
+            <div class="grid grid-3" id="productGrid">
+                <div class="card product-card" data-category="poterie">
+                    <div class="product-image">🏺 Poterie traditionnelle</div>
+                    <h3>Vase en terre cuite</h3>
+                    <p>Fait main par les artisans locaux</p>
+                    <div class="price">350 MAD</div>
+                    <button class="btn" onclick="addToCart('vase-terre-cuite')">Ajouter au panier</button>
+                </div>
+                
+                <div class="card product-card" data-category="tapis">
+                    <div class="product-image">🧵 Tapis berbère</div>
+                    <h3>Tapis berbère authentique</h3>
+                    <p>Tissé à la main, motifs traditionnels</p>
+                    <div class="price">1,200 MAD</div>
+                    <button class="btn" onclick="addToCart('tapis-berbere')">Ajouter au panier</button>
+                </div>
+                
+                <div class="card product-card" data-category="bijoux">
+                    <div class="product-image">💍 Bijoux en argent</div>
+                    <h3>Bracelet en argent gravé</h3>
+                    <p>Motifs géométriques traditionnels</p>
+                    <div class="price">280 MAD</div>
+                    <button class="btn" onclick="addToCart('bracelet-argent')">Ajouter au panier</button>
+                </div>
+                
+                <div class="card product-card" data-category="huiles">
+                    <div class="product-image">🫒 Huile d'argan</div>
+                    <h3>Huile d'argan pure</h3>
+                    <p>100% naturelle, première pression</p>
+                    <div class="price">150 MAD</div>
+                    <button class="btn" onclick="addToCart('huile-argan')">Ajouter au panier</button>
+                </div>
+                
+                <div class="card product-card" data-category="alimentaire">
+                    <div class="product-image">🍯 Miel local</div>
+                    <h3>Miel de montagne</h3>
+                    <p>Récolté dans la région de Tameslouht</p>
+                    <div class="price">80 MAD</div>
+                    <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
+                </div>
+                
+                <div class="card product-card" data-category="poterie">
+                    <div class="product-image">☕ Service à thé</div>
+                    <h3>Service à thé traditionnel</h3>
+                    <p>6 verres + théière en céramique</p>
+                    <div class="price">450 MAD</div>
+                    <button class="btn" onclick="addToCart('service-the')">Ajouter au panier</button>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 2rem; position: sticky; bottom: 20px;">
+                <h3>🛒 Panier (<span id="cartCount">0</span>)</h3>
+                <div id="cartItems"></div>
+                <div id="cartTotal" style="font-weight: bold; margin-top: 1rem;"></div>
+                <button class="btn" onclick="checkout()" id="checkoutBtn" style="margin-top: 1rem; display: none;">
+                    💳 Passer la commande
+                </button>
+            </div>
+        </section>
+
+        <!-- Section Agenda -->
+        <section id="agenda" class="section">
+            <h1>📅 Agenda & Actualités</h1>
+            <p>Restez informé des événements culturels, festivals et actualités de Tameslouht.</p>
+
+            <div class="grid grid-2">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="btn" onclick="changeMonth(-1)">‹</button>
+                        <h3 id="currentMonth">Juin 2025</h3>
+                        <button class="btn" onclick="changeMonth(1)">›</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Le calendrier sera généré par JavaScript -->
+                    </div>
+                </div>
+
+                <div>
+                    <h3>🎪 Événements à venir</h3>
+                    <div class="card">
+                        <h4>Festival des Arts Traditionnels</h4>
+                        <p><strong>📅 15 Juin 2025</strong></p>
+                        <p>Exposition d'artisanat local, démonstrations et ateliers participatifs.</p>
+                        <button class="btn">Plus d'infos</button>
+                    </div>
+                    <div class="card">
+                        <h4>Moussem de Sidi Rahal</h4>
+                        <p><strong>📅 22-24 Juin 2025</strong></p>
+                        <p>Célébration spirituelle et culturelle traditionnelle.</p>
+                        <button class="btn">Plus d'infos</button>
+                    </div>
+                    <div class="card">
+                        <h4>Marché des Producteurs</h4>
+                        <p><strong>📅 Tous les samedis</strong></p>
+                        <p>Produits locaux, artisanat et spécialités culinaires.</p>
+                        <button class="btn">Plus d'infos</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3>📰 Actualités récentes</h3>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h4>Nouvelle coopérative de poterie</h4>
+                        <p><small>5 Juin 2025</small></p>
+                        <p>Ouverture d'une nouvelle coopérative féminine dédiée à la poterie traditionnelle...</p>
+                        <a href="#" class="btn">Lire la suite</a>
+                    </div>
+                    <div class="card">
+                        <h4>Projet de restauration du patrimoine</h4>
+                        <p><small>1 Juin 2025</small></p>
+                        <p>Lancement du projet de restauration des monuments historiques de la commune...</p>
+                        <a href="#" class="btn">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(135deg, #2c3e50, #34495e); color: white; padding: 3rem 0 1rem; margin-top: 4rem;">
+        <div class="container">
+            <div class="grid grid-3" style="gap: 2rem;">
+                <!-- Informations de contact -->
+                <div>
+                    <h3 style="color: #e74c3c; margin-bottom: 1rem;">📞 Contact</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>🏛️ Commune de Tameslouht</strong><br>
+                        Province d'Al Haouz<br>
+                        Région Marrakech-Safi<br>
+                        Maroc
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>📞 Téléphone :</strong> +212 524 XX XX XX<br>
+                        <strong>📧 Email :</strong> contact@tameslouht-vibes.ma<br>
+                        <strong>🌐 Site web :</strong> www.tameslouht-vibes.ma
+                    </div>
+                </div>
+
+                <!-- Horaires
+                <div>
+                    <h3 style="color: #e74c3c; margin-bottom: 1rem;">⏰ Horaires</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Lundi - Vendredi :</strong> 8h00 - 16h00<br>
+                        <strong>Samedi :</strong> 8h00 - 12h00<br>
+                        <strong>Dimanche :</strong> Fermé
+                    </div>
+                    
+                    <h4 style="color: #f39c12; margin-top: 1.5rem;">📝 Formulaire de contact</h4>
+                    <form onsubmit="submitContact(event)" style="margin-top: 1rem;">
+                        <div style="margin-bottom: 1rem;">
+                            <input type="text" placeholder="Nom complet" required style="width: 100%; padding: 0.5rem; border: none; border-radius: 5px;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <input type="email" placeholder="Email" required style="width: 100%; padding: 0.5rem; border: none; border-radius: 5px;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <textarea placeholder="Votre message" rows="3" required style="width: 100%; padding: 0.5rem; border: none; border-radius: 5px; resize: vertical;"></textarea>
+                        </div>
+                        <button type="submit" style="background: #e74c3c; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer;">
+                            Envoyer
+                        </button>
+                    </form>
+                </div> -->
+
+                <!-- Partenaires et liens -->
+                <div>
+                    <h3 style="color: #e74c3c; margin-bottom: 1rem;">🤝 Nos Partenaires</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <div style="padding: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 5px;">
+                            🏛️ Ministère du Tourisme
+                        </div>
+                        <div style="padding: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 5px;">
+                            🎨 Association des Artisans
+                        </div>
+                        <div style="padding: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 5px;">
+                            🌍 Office de Tourisme Régional
+                        </div>
+                    </div>
+ <!-- Partenaires et liens 
+                    <h4 style="color: #f39c12; margin-bottom: 1rem;">🔗 Liens Rapides</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="#" onclick="showSection('documentaire')" style="color: #3498db; text-decoration: none;">🎬 Documentaire</a>
+                        <a href="#" onclick="showSection('galerie')" style="color: #3498db; text-decoration: none;">📸 Galerie</a>
+                        <a href="#" onclick="showSection('itineraires')" style="color: #3498db; text-decoration: none;">🗺️ Itinéraires</a>
+                        <a href="#" onclick="showSection('store')" style="color: #3498db; text-decoration: none;">🛍️ Store</a>
+                        <a href="#" onclick="showSection('agenda')" style="color: #3498db; text-decoration: none;">📅 Agenda</a>
+                    </div>-->
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                <p>&copy; 2025 TAMESLOUHT VIBES - Tous droits réservés | Développé avec ❤️ pour préserver notre patrimoine</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
