@@ -28,7 +28,7 @@
                 generateCalendar();
             }
         }
-
+/*
         // Système de notifications
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
@@ -42,7 +42,7 @@
                 notification.classList.remove('show');
             }, 3000);
         }
-
+*/
         // Fonctions du documentaire
         function playVideo() {
          showNotification('Lecture du documentaire en cours...', 'info');
@@ -293,13 +293,6 @@
             showNotification(`Jour ${day} sélectionné`, 'info');
         }
 
-        // Fonction de contact
-        function submitContact(event) {
-            event.preventDefault();
-            showNotification('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.', 'success');
-            event.target.reset();
-        }
-
         // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
             generateCalendar();
@@ -331,7 +324,7 @@
                 }
             });
         });
-
+/*
         // Auto-hide notification après 5 secondes  
         let notificationTimeout;
         function autoHideNotification() {
@@ -357,7 +350,7 @@
                 );
             }
         }
-
+*/
         // Système de recherche global
         function searchSite(query) {
             if (!query) return;
@@ -368,7 +361,6 @@
                 'itineraires': ['circuit', 'tourisme', 'visite', 'randonnée', 'artisanat', 'nature'],
                 'store': ['boutique', 'artisanal', 'achat', 'produit', 'poterie', 'tapis'],
                 'agenda': ['événement', 'festival', 'actualité', 'moussem'],
-                'contact': ['contact', 'information', 'partenariat']
             };
 
             const results = [];
