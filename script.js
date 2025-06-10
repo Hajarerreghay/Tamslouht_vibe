@@ -596,11 +596,11 @@
             });
         }
 
-        // Gestion des erreurs globales
+        /*Gestion des erreurs globales
         window.addEventListener('error', function(e) {
             console.error('Erreur détectée:', e.error);
             showNotification('Une erreur est survenue. Veuillez rafraîchir la page si le problème persiste.', 'error');
-        });
+        });*/
 
         // Service Worker pour le cache offline (simulation)
         function registerServiceWorker() {
@@ -625,7 +625,7 @@
             }
             
             // Tentative de géolocalisation
-            getLocation();
+            //getLocation();
             
             // Enregistrement du service worker
             registerServiceWorker();
