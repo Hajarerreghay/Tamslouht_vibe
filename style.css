@@ -52,11 +52,13 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  color: var(--dark-gray);
-  background: var(--light-gray);
-  overflow-x: hidden;
+   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #ff9f43 0%, #feca57 30%, #3742fa 70%, #2f3542 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,6 +77,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
 
 /* ===== ANIMATIONS PUISSANTES ===== */
 @keyframes fadeInUp {
@@ -141,21 +144,33 @@ nav {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--primary-orange);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
+  font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff9f43, #feca57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 2px 10px rgba(255, 159, 67, 0.3);
 }
 
 .logo:hover {
-  transform: scale(1.05);
-  color: var(--vibrant-orange);
+  transform: scale(1.08) rotate(-2deg);
+  filter: drop-shadow(0 0 20px rgba(255, 159, 67, 0.5));
 }
 
+.logo img {
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(255, 159, 67, 0.4);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.logo:hover img {
+    transform: rotate(360deg) scale(1.1);
+}
 .nav-links {
   display: flex;
   list-style: none;
