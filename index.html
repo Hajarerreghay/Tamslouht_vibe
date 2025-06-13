@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAMESLOUHT VIBES - Patrimoine Culturel</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <header>
@@ -19,6 +20,7 @@
                 <li><a href="#" onclick="showSection('galerie')">Galerie</a></li>
                 <li><a href="#" onclick="showSection('itineraires')">Itinéraires</a></li>
                 <li><a href="#" onclick="showSection('store')">Store</a></li>
+                 <!--li><a href="#" onclick="showSection('')">ateliers</a></li-->
                 <li><a href="#" onclick="showSection('agenda')">Agenda</a></li>
             </ul>
             <div class="mobile-menu">☰</div>
@@ -59,7 +61,7 @@
 
     <div class="video-container">
         <video id="documentaryVideo" width="100%" controls style="border-radius: 10px;">
-            <source src="vedios/مصابيح القرية  الموسم الثالث   القارئ عبد الكريم الوقوري –الحلقة الثالثة - Trim.mp4" type="video/mp4">
+            <source src="vedios/مصابيح القرية  الموسم الثالث   القارئ عبد الكريم الوقوري –الحلقة الثالثة (1) - Trim.mp4" type="video/mp4">
             Votre navigateur ne supporte pas la lecture de vidéo.
         </video>
        
@@ -274,6 +276,58 @@
                     💳 Passer la commande
                 </button>
             </div>
+            
+            <!-- Modal de commande -->
+    <div id="checkoutModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 Finaliser votre commande</h2>
+                <button class="close-modal" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            
+            <div class="order-summary">
+                <h3>Résumé de la commande</h3>
+                <div id="orderItems"></div>
+                <div class="order-total">
+                    <div class="order-item">
+                        <span>Total:</span>
+                        <span id="orderTotal">0 MAD</span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="checkoutForm">
+                <div class="form-field">
+                    <label for="customerName">Nom complet *</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="customerEmail">Email *</label>
+                    <input type="email" id="customerEmail" name="customerEmail" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="customerPhone">Téléphone *</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required>
+                </div>
+                
+                <div class="form-field">
+                    <label for="customerAddress">Adresse de livraison *</label>
+                    <textarea id="customerAddress" name="customerAddress" required placeholder="Adresse complète avec ville et code postal"></textarea>
+                </div>
+                
+                <div class="form-field">
+                    <label for="customerNotes">Notes de commande (optionnel)</label>
+                    <textarea id="customerNotes" name="customerNotes" placeholder="Instructions spéciales, préférences de livraison, etc."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeCheckoutModal()">Annuler</button>
+                    <button type="submit" class="btn">Confirmer la commande</button>
+                </div>
+            </form>
+        </div>
         </section>
 
         <!-- Section Agenda -->
