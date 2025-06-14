@@ -5,6 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAMESLOUHT VIBES - Patrimoine Culturel</title>
     <link rel="stylesheet" href="style.css">
+     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            margin-bottom: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .comments-section {
+            margin-top: 30px;
+        }
+
+        .comments-title {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .comment-form {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-row input {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #2980b9, #3498db);
+        }
+
+        .comments-list {
+            margin-top: 30px;
+        }
+
+        .comment {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .comment:hover {
+            transform: translateX(5px);
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .comment-date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .comment-text {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .no-comments {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .section {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
     
 </head>
 <body>
@@ -20,7 +205,7 @@
                 <li><a href="#" onclick="showSection('galerie')">Galerie</a></li>
                 <li><a href="#" onclick="showSection('itineraires')">Itinéraires</a></li>
                 <li><a href="#" onclick="showSection('store')">Store</a></li>
-                <!--li><a href="#" onclick="showSection('')">ateliers</a></li-->
+                <li><a href="#" onclick="showSection('atelier')">ateliers</a></li>
                 <!--li><a href="#" onclick="showSection('')">scoutiseme culturalle </a></li-->
                 <li><a href="#" onclick="showSection('agenda')">Agenda</a></li>
             </ul>
@@ -32,14 +217,14 @@
         <!-- Section Accueil -->
         <section id="accueil" class="section active">
             <div class="hero">
-                <h1>Bienvenue à Tameslouht</h1>
+                <h1>Bienvenue à Tameslouht vibes</h1>
                 <p>Découvrez le patrimoine culturel unique de notre commune et vivez une expérience authentique</p>
                 <a href="#" class="btn" onclick="showSection('documentaire')">Découvrir le Documentaire</a>
             </div>
 
             <div class="grid grid-3" style="margin-top: 3rem;">
                 <div class="card">
-                    <h3>🎬 Documentaire</h3>
+                    <h3>🎬 Storytelling</h3>
                     <p>Plongez dans l'histoire et la culture de Tameslouht à travers notre documentaire exclusif.</p>
                     <a href="#" class="btn" onclick="showSection('documentaire')">Regarder</a>
                 </div>
@@ -52,9 +237,47 @@
                     <h3>🗺️ Circuits Touristiques</h3>
                     <p>Explorez nos itinéraires thématiques pour une découverte complète de la région.</p>
                     <a href="#" class="btn" onclick="showSection('itineraires')">Découvrir</a>
+                    <!--a href="#" class="btn" onclick="showSection('itineraires')">Découvrir</a-->
                 </div>
             </div>
         </section>
+        <!-- Section Atelier -->
+      <section id="atelier" class="section">      
+        <div class="container">
+        <h1> 🎨Ateliers d'Art Traditionnel</h2>
+        <p>Découvrez l'héritage artistique de Tameslouht à travers nos ateliers dédiés au portrait traditionnel et au tissage berbère. Participez à des expériences authentiques guidées par nos maîtres artisans locaux.</p>
+        </div>   
+             <div>
+    <div class="grid grid-3" style="margin-top: 3rem;">                 
+        <div class="card">                     
+            <h3>🎨 Portraits Traditionnels</h3>                     
+            <p>Découvrez l'art du portrait traditionnel marocain et les techniques ancestrales de nos artisans locaux.</p>                     
+            <a href="#" class="btn">Plus d'informations</a>  
+            <!--a href="#" class="btn" onclick="showSection('portraits')">Explorer</a-->                 
+        </div>                 
+        <div class="card">                     
+            <h3>🧵 Atelier de Tissage</h3>                     
+            <p>Apprenez les secrets du tissage berbère et participez à nos ateliers pratiques avec les maîtres tisserands.</p>                     
+            <a href="#" class="btn">Plus d'informations</a>                 
+        </div>                 
+        <div class="card">                     
+            <h3>🏺 Artisanat Local</h3>                     
+            <p>Explorez notre collection d'œuvres artisanales alliant portrait et textile dans la tradition de Tameslouht.</p>                     
+            <a href="#" class="btn">Plus d'informations</a>                 
+        </div>           
+        <!--div class="card">                     
+            <h3>🧵 Atelier de Tissage</h3>                     
+            <p>Apprenez les secrets du tissage berbère et participez à nos ateliers pratiques avec les maîtres tisserands.</p>                     
+            <a href="#" class="btn">Plus d'informations</a>                 
+        </div>                 
+        <div class="card">                     
+            <h3>🏺 Artisanat Local</h3>                     
+            <p>Explorez notre collection d'œuvres artisanales alliant portrait et textile dans la tradition de Tameslouht.</p>                     
+            <a href="#" class="btn">Plus d'informations</a>                 
+        </div-->             
+    </div>
+    </div>          
+</section>
 
        <!-- Section Documentaire -->
 <section id="documentaire" class="section">
@@ -65,9 +288,44 @@
             <source src="vedios/مصابيح القرية  الموسم الثالث   القارئ عبد الكريم الوقوري –الحلقة الثالثة (1) - Trim.mp4" type="video/mp4">
             Votre navigateur ne supporte pas la lecture de vidéo.
         </video>
-       
     </div>
-    
+    <!-- Section Commentaires -->
+        <div class="comments-section">
+            <h2 class="comments-title">💬 Commentaires</h2>
+            
+            <!-- Formulaire de commentaire -->
+            <div class="comment-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userName">Nom *</label>
+                        <input type="text" id="userName" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email</label>
+                        <input type="email" id="userEmail" placeholder="votre.email@exemple.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="commentText">Votre commentaire *</label>
+                    <textarea id="commentText" required placeholder="Partagez vos impressions sur ce documentaire..."></textarea>
+                </div>
+                
+                <button type="button" class="submit-btn" onclick="addComment()">
+                    Publier le commentaire
+                </button>
+            </div>
+
+            <!-- Liste des commentaires -->
+            <div class="comments-list">
+                <div id="commentsContainer">
+                    <div class="no-comments">
+                        Aucun commentaire pour le moment. Soyez le premier à partager votre avis !
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--
     <div class="grid grid-2" style="margin-top: 2rem;">
         <div class="card">
             <h3>🎥 Bandes-annonces</h3>
@@ -78,7 +336,7 @@
             <h3>📝 Synopsis</h3>
             <p>Un voyage à travers l'histoire, les traditions et l'art de vivre à Tameslouht. Découvrez les témoignages des habitants et l'évolution de cette commune riche en patrimoine.</p>
         </div>
-    </div>
+    </div>-->
 </section>
 
         <!-- Section Galerie -->
@@ -207,7 +465,7 @@
             <div class="form-group">
                 <label>Filtrer les produits :</label>
                 <select onchange="filterProducts(this.value)">
-                    <option value="all">Tous les produits</option>
+                    <option value="all">Le plus demandé</option>
                     <option value="poterie">Poterie</option>
                     <option value="tapis">Tapis & Tissage</option>
                   <!--   <option value="bijoux">Bijoux traditionnels</option--> 
@@ -270,31 +528,31 @@
                     <div class="product-image">produit de fantasia</div>
                      <img src="vedios/Venise11.jpg" alt="">
                     <h3>produit de fantasia</h3>
-                    <p>Récolté dans la région de Tameslouht</p>
+                    <p>Patrimoinen dela région de Tameslouht</p>
                     <div class="price">3000 MAD</div>
                     <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
                 </div>
                 <div class="card product-card" data-category="alimentaire">
-                    <div class="product-image">produit de fantasia</div>
+                    <div class="product-image">Selle de cheval1</div>
                      <img src="vedios/serge1.jpg" alt="">
                     <h3>produit de fantasia</h3>
-                    <p>Récolté dans la région de Tameslouht</p>
+                    <p>Patrimoine de la région de Tameslouht</p>
                     <div class="price">3000 MAD</div>
                     <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
                 </div>
                 <div class="card product-card" data-category="alimentaire">
-                    <div class="product-image">produit de fantasia</div>
+                    <div class="product-image">Selle de cheval2</div>
                      <img src="vedios/serge4.jpg" alt="">
                     <h3>produit de fantasia</h3>
-                    <p>Récolté dans la région de Tameslouht</p>
+                    <p>Patrimoine de la région de Tameslouht</p>
                     <div class="price">3000 MAD</div>
                     <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
                 </div>
                 <div class="card product-card" data-category="alimentaire">
-                    <div class="product-image">produit de fantasia</div>
+                    <div class="product-image">Selle de cheval3</div>
                      <img src="vedios/Serge3.jpg" alt="">
                     <h3>produit de fantasia</h3>
-                    <p>Récolté dans la région de Tameslouht</p>
+                    <p>Patrimoine de la région de Tameslouht</p>
                     <div class="price">3000 MAD</div>
                     <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
                 </div>
@@ -527,5 +785,107 @@
         <span id="notificationText"></span>
     </div>
     <script src="script.js"></script>
+     <script>
+        // Stockage temporaire des commentaires (en mémoire)
+        let comments = [];
+
+        function addComment() {
+            const userName = document.getElementById('userName').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
+            const commentText = document.getElementById('commentText').value.trim();
+
+            // Validation
+            if (!userName || !commentText) {
+                alert('Veuillez remplir au moins votre nom et votre commentaire.');
+                return;
+            }
+
+            // Créer le commentaire
+            const comment = {
+                id: Date.now(),
+                name: userName,
+                email: userEmail,
+                text: commentText,
+                date: new Date().toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            // Ajouter au début de la liste
+            comments.unshift(comment);
+
+            // Réinitialiser le formulaire
+            document.getElementById('userName').value = '';
+            document.getElementById('userEmail').value = '';
+            document.getElementById('commentText').value = '';
+
+            // Mettre à jour l'affichage
+            displayComments();
+
+            // Animation de confirmation
+            const btn = document.querySelector('.submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Commentaire ajouté !';
+            btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
+            }, 2000);
+        }
+
+        function displayComments() {
+            const container = document.getElementById('commentsContainer');
+            
+            if (comments.length === 0) {
+                container.innerHTML = `
+                    <div class="no-comments">
+                        Aucun commentaire pour le moment. Soyez le premier à partager votre avis !
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = comments.map(comment => `
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">${escapeHtml(comment.name)}</span>
+                        <span class="comment-date">${comment.date}</span>
+                    </div>
+                    <div class="comment-text">${escapeHtml(comment.text)}</div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Permettre la soumission avec Enter (Ctrl+Enter dans le textarea)
+        document.getElementById('commentText').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                addComment();
+            }
+        });
+
+        // Animation d'entrée
+        window.addEventListener('load', function() {
+            const section = document.querySelector('.section');
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease';
+            
+            setTimeout(() => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
