@@ -167,24 +167,6 @@
                 font-size: 2em;
             }
         }
-        .delete-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            font-size: 12px;
-            display: none;
-        }
-
-        .comment:hover .delete-btn {
-            display: block;
-        }
     </style>
     
 </head>
@@ -732,56 +714,70 @@
         <span id="notificationText"></span>
     </div>
     <script src="script.js"></script>
-    <script>
-        // Stockage des commentaires
-        let comments = [];
-        const STORAGE_KEY = 'documentaryComments';
+     <script>
+        // Stockage persistant des commentaires avec données d'exemple
+        let comments = [
+            {
+                id: 1640995200000,
+                name: "Hajar ERREGHAY",
+                email: "hajar@gmail.com",
+                text: "Un documentaire fascinant qui capture l'essence de notre patrimoine culturel. La qualité de la narration et les témoignages sont particulièrement touchants.",
+                date: new Date(2025, 5, 14, 14, 30).toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            },
+            {
+                id: 1640908800000,
+                name: "Fatima Zahra",
+                email: "fatima@gmail.com",
+                text: "Merci pour ce magnifique travail de préservation. C'est important de garder vivante la mémoire de nos ancêtres et de transmettre ces valeurs aux nouvelles générations.",
+                date: new Date(2025, 5, 14, 16, 45).toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            },
+            {
+                id: 1640822400000,
+                name: "Achraf el",
+                email: "achraf@gamil.com",
+                text: "Excellente initiative ! Ce type de documentaire est essentiel pour préserver notre identité culturelle. J'espère voir plus de productions similaires.",
+                date: new Date(2025, 5, 15, 10, 20).toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            }
+        ];
 
-        // Charger les commentaires depuis localStorage
+        // Fonction pour charger les commentaires depuis la simulation de stockage
         function loadComments() {
-            try {
-                const savedComments = localStorage.getItem(STORAGE_KEY);
-                if (savedComments) {
-                    comments = JSON.parse(savedComments);
-                } else {
-                    // Commentaires d'exemple si aucun commentaire sauvegardé
-                    comments = [
-                        {
-                            id: Date.now() - 86400000,
-                            name: "Achraf EL",
-                            email: "achraf@gamil.com",
-                            text: "Un documentaire fascinant qui capture l'essence de notre patrimoine culturel. La qualité de la narration et les témoignages sont particulièrement touchants.",
-                            date: new Date(Date.now() - 86400000).toLocaleString('fr-FR', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric',
-                                hour: '2-digit',
-                                minute: '2-digit'
-                            })
-                        }
-                    ];
-                    saveComments(); // Sauvegarder les commentaires d'exemple
-                }
-            } catch (error) {
-                console.error('Erreur lors du chargement des commentaires:', error);
-                comments = [];
-            }
+            // Dans un vrai environnement, vous pourriez utiliser:
+            // const savedComments = localStorage.getItem('documentaryComments');
+            // if (savedComments) {
+            //     comments = JSON.parse(savedComments);
+            // }
+            
             displayComments();
-            updateStats();
         }
 
-        // Sauvegarder les commentaires dans localStorage
+        // Fonction pour sauvegarder les commentaires
         function saveComments() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
-                console.log('Commentaires sauvegardés:', comments.length);
-            } catch (error) {
-                console.error('Erreur lors de la sauvegarde:', error);
-                alert('Erreur lors de la sauvegarde des commentaires');
-            }
+            // Dans un vrai environnement, vous pourriez utiliser:
+            // localStorage.setItem('documentaryComments', JSON.stringify(comments));
+            
+            // Pour cette démonstration, nous gardons les commentaires en mémoire
+            console.log('Commentaires sauvegardés:', comments.length);
         }
 
-        // Ajouter un nouveau commentaire
         function addComment() {
             const userName = document.getElementById('userName').value.trim();
             const userEmail = document.getElementById('userEmail').value.trim();
@@ -811,7 +807,7 @@
             // Ajouter au début de la liste
             comments.unshift(comment);
 
-            // Sauvegarder
+            // Sauvegarder les commentaires
             saveComments();
 
             // Réinitialiser le formulaire
@@ -821,7 +817,6 @@
 
             // Mettre à jour l'affichage
             displayComments();
-            updateStats();
 
             // Animation de confirmation
             const btn = document.querySelector('.submit-btn');
@@ -835,17 +830,6 @@
             }, 2000);
         }
 
-        // Supprimer un commentaire
-        function deleteComment(commentId) {
-            if (confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')) {
-                comments = comments.filter(comment => comment.id !== commentId);
-                saveComments();
-                displayComments();
-                updateStats();
-            }
-        }
-
-        // Afficher les commentaires
         function displayComments() {
             const container = document.getElementById('commentsContainer');
             const countElement = document.getElementById('commentCount');
@@ -864,7 +848,6 @@
 
             container.innerHTML = comments.map(comment => `
                 <div class="comment">
-                    <button class="delete-btn" onclick="deleteComment(${comment.id})" title="Supprimer">×</button>
                     <div class="comment-header">
                         <span class="comment-author">${escapeHtml(comment.name)}</span>
                         <span class="comment-date">${comment.date}</span>
@@ -874,41 +857,20 @@
             `).join('');
         }
 
-        // Mettre à jour les statistiques
-        function updateStats() {
-            document.getElementById('totalComments').textContent = comments.length;
-            
-            const lastCommentDate = comments.length > 0 ? 
-                new Date(comments[0].date).toLocaleDateString('fr-FR') : 
-                'Aucun';
-            document.getElementById('lastComment').textContent = lastCommentDate;
-        }
-        // Vider tous les commentaires
-        function clearAllComments() {
-            if (confirm('Êtes-vous sûr de vouloir supprimer TOUS les commentaires ? Cette action est irréversible.')) {
-                comments = [];
-                saveComments();
-                displayComments();
-                updateStats();
-                alert('Tous les commentaires ont été supprimés.');
-            }
-        }
-
-        // Échapper le HTML
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
-        // Permettre la soumission avec Ctrl+Enter
+        // Permettre la soumission avec Enter (Ctrl+Enter dans le textarea)
         document.getElementById('commentText').addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'Enter') {
                 addComment();
             }
         });
 
-        // Animation d'entrée et initialisation
+        // Animation d'entrée
         window.addEventListener('load', function() {
             const section = document.querySelector('.section');
             section.style.opacity = '0';
@@ -920,13 +882,8 @@
                 section.style.transform = 'translateY(0)';
             }, 100);
             
-            // Charger les commentaires
+            // Charger les commentaires au démarrage
             loadComments();
-        });
-
-        // Sauvegarder automatiquement avant fermeture
-        window.addEventListener('beforeunload', function() {
-            saveComments();
         });
     </script>
 </body>
