@@ -306,18 +306,7 @@
                 </div>
             </div>
         </div>
-    <!--
-    <div class="grid grid-2" style="margin-top: 2rem;">
-        <div class="card">
-            <h3>🎥 Bandes-annonces</h3>
-            <p>Aperçu des moments forts du documentaire</p>
-            <button class="btn" onclick="showTrailer()">Voir la bande-annonce</button>
-        </div>
-        <div class="card">
-            <h3>📝 Synopsis</h3>
-            <p>Un voyage à travers l'histoire, les traditions et l'art de vivre à Tameslouht. Découvrez les témoignages des habitants et l'évolution de cette commune riche en patrimoine.</p>
-        </div>
-    </div>-->
+
 </section>
 
         <!-- Section Galerie -->
@@ -439,175 +428,159 @@
         </section>
 
         <!-- Section Store -->
-        <section id="store" class="section">
-            <h1>🛍️ Store Artisanal</h1>
-            <p>Découvrez et achetez les produits artisanaux authentiques de Tameslouht.</p>
+       <section id="store" class="section">
+        <h1>🛍️ Store Artisanal</h1>
+        <p style="text-align: center; margin-bottom: 2rem;">Découvrez et achetez les produits artisanaux authentiques de Tameslouht.</p>
 
-            <div class="form-group">
-                <label>Filtrer les produits :</label>
-                <select onchange="filterProducts(this.value)">
-                    <option value="all">Le plus demandé</option>
-                    <option value="poterie">Poterie</option>
-                    <option value="tapis">Tapis & Tissage</option>
-                  <!--   <option value="bijoux">Bijoux traditionnels</option--> 
-                    <option value="huiles">Huiles & Cosmétiques</option>
-                    <option value="alimentaire">Fantasia</option>
-                </select>
+        <div class="form-group">
+            <label>Filtrer les produits :</label>
+            <select onchange="filterProducts(this.value)">
+                <option value="all">Le plus demandé</option>
+                <option value="poterie">Poterie</option>
+                <option value="tapis">Tapis & Tissage</option>
+                <option value="huiles">Huiles & Cosmétiques</option>
+                <option value="alimentaire">Fantasia</option>
+            </select>
+        </div>
+
+        <div class="grid grid-3" id="productGrid">
+            <div class="card product-card" data-category="poterie">
+                <div class="product-image">🏺 Poterie traditionnelle</div>
+                <img src="vedios/Poterie traditionnelle3.jpg" alt="Vase en terre cuite">
+                <h3>Vase en terre cuite</h3>
+                <p>Fait main par les artisans locaux</p>
+                <div class="price">350 MAD</div>
+                <button class="btn" onclick="addToCart('vase-terre-cuite-1')">Ajouter au panier</button>
             </div>
-
-            <div class="grid grid-3" id="productGrid">
-                <div class="card product-card" data-category="poterie">
-                    <div class="product-image">🏺 Poterie traditionnelle</div>
-                    <img src="vedios/Poterie traditionnelle3.jpg" alt="">
-                    <h3>Vase en terre cuite</h3>
-                    <p>Fait main par les artisans locaux</p>
-                    <div class="price">350 MAD</div>
-                    <button class="btn" onclick="addToCart('vase-terre-cuite')">Ajouter au panier</button>
-                </div>
-                <div class="card product-card" data-category="poterie">
-                    <div class="product-image">🏺 Poterie traditionnelle</div>
-                    <img src="vedios/Poterie traditionnelle4.jpg" alt="">
-                    <h3>Vase en terre cuite</h3>
-                    <p>Fait main par les artisans locaux</p>
-                    <div class="price">300 MAD</div>
-                    <button class="btn" onclick="addToCart('vase-terre-cuite')">Ajouter au panier</button>
-                </div>
-                
-                <div class="card product-card" data-category="tapis">
-                    <div class="product-image">🧵 Tapis berbère</div>
-                    <img src="vedios/Tapis berbère2.jpg" alt="">
-                    <h3>Tapis berbère authentique</h3>
-                    <p>Tissé à la main, motifs traditionnels</p>
-                    <div class="price">1,000 MAD</div>
-                    <button class="btn" onclick="addToCart('tapis-berbere')">Ajouter au panier</button>
-                </div>
-                <div class="card product-card" data-category="tapis">
-                    <div class="product-image">🧵 Tapis berbère</div>
-                    <img src="vedios/Tapis berbère3.jpg" alt="">
-                    <h3>Tapis berbère authentique</h3>
-                    <p>Tissé à la main, motifs traditionnels</p>
-                    <div class="price">1,200 MAD</div>
-                    <button class="btn" onclick="addToCart('tapis-berbere')">Ajouter au panier</button>
-                </div>
-                <!--div class="card product-card" data-category="bijoux">
-                    <div class="product-image">💍 Bijoux en argent</div>
-                    <h3>Bracelet en argent gravé</h3>
-                    <p>Motifs géométriques traditionnels</p>
-                    <div class="price">280 MAD</div>
-                    <button class="btn" onclick="addToCart('bracelet-argent')">Ajouter au panier</button>
-                </div-->
-                <div class="card product-card" data-category="huiles">
-                    <div class="product-image">🫒 Huile d’olive</div>
-                    <img src="vedios/Huile d'olive.jpg" alt="">
-                    <h3>Huile d'olive pure</h3>
-                    <p>100% naturelle, première pression</p>
-                    <div class="price">150 MAD</div>
-                    <button class="btn" onclick="addToCart('huile-argan')">Ajouter au panier</button>
-                </div>
-                
-                <div class="card product-card" data-category="alimentaire">
-                    <div class="product-image">produit de fantasia</div>
-                     <img src="vedios/Venise11.jpg" alt="">
-                    <h3>produit de fantasia</h3>
-                    <p>Patrimoinen dela région de Tameslouht</p>
-                    <div class="price">3000 MAD</div>
-                    <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
-                </div>
-                <div class="card product-card" data-category="alimentaire">
-                    <div class="product-image">Selle de cheval1</div>
-                     <img src="vedios/serge1.jpg" alt="">
-                    <h3>produit de fantasia</h3>
-                    <p>Patrimoine de la région de Tameslouht</p>
-                    <div class="price">3000 MAD</div>
-                    <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
-                </div>
-                <div class="card product-card" data-category="alimentaire">
-                    <div class="product-image">Selle de cheval2</div>
-                     <img src="vedios/serge4.jpg" alt="">
-                    <h3>produit de fantasia</h3>
-                    <p>Patrimoine de la région de Tameslouht</p>
-                    <div class="price">3000 MAD</div>
-                    <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
-                </div>
-                <div class="card product-card" data-category="alimentaire">
-                    <div class="product-image">Selle de cheval3</div>
-                     <img src="vedios/Serge3.jpg" alt="">
-                    <h3>produit de fantasia</h3>
-                    <p>Patrimoine de la région de Tameslouht</p>
-                    <div class="price">3000 MAD</div>
-                    <button class="btn" onclick="addToCart('miel-montagne')">Ajouter au panier</button>
-                </div>
-                <div class="card product-card" data-category="poterie">
-                    <div class="product-image">☕ Service à thé</div>
-                     <img src="vedios/Service à thé2.jpg" alt="">
-                    <h3>Service à thé traditionnel</h3>
-                    <p>6 verres + théière en céramique</p>
-                    <div class="price">450 MAD</div>
-                    <button class="btn" onclick="addToCart('service-the')">Ajouter au panier</button>
-                </div>
-            </div>
-
-            <div class="card" style="margin-top: 2rem; position: sticky; bottom: 20px;">
-                <h3>🛒 Panier (<span id="cartCount">0</span>)</h3>
-                <div id="cartItems"></div>
-                <div id="cartTotal" style="font-weight: bold; margin-top: 1rem;"></div>
-                <button class="btn" onclick="checkout()" id="checkoutBtn" style="margin-top: 1rem; display: none;">
-                    💳 Passer la commande
-                </button>
+            <div class="card product-card" data-category="poterie">
+                <div class="product-image">🏺 Poterie traditionnelle</div>
+                <img src="vedios/Poterie traditionnelle4.jpg" alt="Vase en terre cuite">
+                <h3>Vase en terre cuite</h3>
+                <p>Fait main par les artisans locaux</p>
+                <div class="price">300 MAD</div>
+                <button class="btn" onclick="addToCart('vase-terre-cuite-2')">Ajouter au panier</button>
             </div>
             
-            <!-- Modal de commande -->
-    <div id="checkoutModal" class="modal hidden">
+            <div class="card product-card" data-category="tapis">
+                <div class="product-image">🧵 Tapis berbère</div>
+                <img src="vedios/Tapis berbère2.jpg" alt="Tapis berbère">
+                <h3>Tapis berbère authentique</h3>
+                <p>Tissé à la main, motifs traditionnels</p>
+                <div class="price">1,000 MAD</div>
+                <button class="btn" onclick="addToCart('tapis-berbere-1')">Ajouter au panier</button>
+            </div>
+            <div class="card product-card" data-category="tapis">
+                <div class="product-image">🧵 Tapis berbère</div>
+                <img src="vedios/Tapis berbère3.jpg" alt="Tapis berbère">
+                <h3>Tapis berbère authentique</h3>
+                <p>Tissé à la main, motifs traditionnels</p>
+                <div class="price">1,200 MAD</div>
+                <button class="btn" onclick="addToCart('tapis-berbere-2')">Ajouter au panier</button>
+            </div>
+            <div class="card product-card" data-category="huiles">
+                <div class="product-image">🫒 Huile d'olive</div>
+                <img src="vedios/Huile d'olive.jpg" alt="Huile d'olive">
+                <h3>Huile d'olive pure</h3>
+                <p>100% naturelle, première pression</p>
+                <div class="price">150 MAD</div>
+                <button class="btn" onclick="addToCart('huile-olive')">Ajouter au panier</button>
+            </div>
+            
+            <div class="card product-card" data-category="alimentaire">
+                <div class="product-image">produit de fantasia</div>
+                <img src="vedios/Venise11.jpg" alt="Produit de fantasia">
+                <h3>produit de fantasia</h3>
+                <p>Patrimoine de la région de Tameslouht</p>
+                <div class="price">3000 MAD</div>
+                <button class="btn" onclick="addToCart('fantasia-1')">Ajouter au panier</button>
+            </div>
+            <div class="card product-card" data-category="alimentaire">
+                <div class="product-image">Selle de cheval1</div>
+                <img src="vedios/serge1.jpg" alt="Selle de cheval">
+                <h3>produit de fantasia</h3>
+                <p>Patrimoine de la région de Tameslouht</p>
+                <div class="price">3000 MAD</div>
+                <button class="btn" onclick="addToCart('fantasia-2')">Ajouter au panier</button>
+            </div>
+            <div class="card product-card" data-category="alimentaire">
+                <div class="product-image">Selle de cheval2</div>
+                <img src="vedios/serge4.jpg" alt="Selle de cheval">
+                <h3>produit de fantasia</h3>
+                <p>Patrimoine de la région de Tameslouht</p>
+                <div class="price">3000 MAD</div>
+                <button class="btn" onclick="addToCart('fantasia-3')">Ajouter au panier</button>
+            </div>
+            <div class="card product-card" data-category="alimentaire">
+                <div class="product-image">Selle de cheval3</div>
+                <img src="vedios/Serge3.jpg" alt="Selle de cheval">
+                <h3>produit de fantasia</h3>
+                <p>Patrimoine de la région de Tameslouht</p>
+                <div class="price">3000 MAD</div>
+                <button class="btn" onclick="addToCart('fantasia-4')">Ajouter au panier</button>
+            </div>
+            <div class="card product-card" data-category="poterie">
+                <div class="product-image">☕ Service à thé</div>
+                <img src="vedios/Service à thé2.jpg" alt="Service à thé">
+                <h3>Service à thé traditionnel</h3>
+                <p>6 verres + théière en céramique</p>
+                <div class="price">450 MAD</div>
+                <button class="btn" onclick="addToCart('service-the')">Ajouter au panier</button>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 2rem; position: sticky; bottom: 20px;">
+            <h3>🛒 Panier (<span id="cartCount">0</span>)</h3>
+            <div id="cartItems"></div>
+            <div id="cartTotal" style="font-weight: bold; margin-top: 1rem;"></div>
+            <button class="btn" onclick="checkout()" id="checkoutBtn" style="margin-top: 1rem; display: none;">
+                💳 Passer la commande
+            </button>
+        </div>
+        </section>
+        <!-- Modal pour le formulaire de commande -->
+    <div id="checkoutModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>🛒 Finaliser votre commande</h2>
-                <button class="close-modal" onclick="closeCheckoutModal()">&times;</button>
-            </div>
-            
-            <div class="order-summary">
-                <h3>Résumé de la commande</h3>
-                <div id="orderItems"></div>
-                <div class="order-total">
-                    <div class="order-item">
-                        <span>Total:</span>
-                        <span id="orderTotal">0 MAD</span>
+            <h2>🛍️ Finaliser votre commande</h2>
+            <form id="checkoutForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Prénom *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Nom *</label>
+                        <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
-            </div>
-
-            <form id="checkoutForm">
-                <div class="form-field">
-                    <label for="customerName">Nom complet *</label>
-                    <input type="text" id="customerName" name="customerName" required>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 
-                <div class="form-field">
-                    <label for="customerEmail">Email *</label>
-                    <input type="email" id="customerEmail" name="customerEmail" required>
+                <div class="form-group">
+                    <label for="address">Adresse de livraison *</label>
+                    <input type="text" id="address" name="address" required placeholder="Rue, numéro, ville">
                 </div>
                 
-                <div class="form-field">
-                    <label for="customerPhone">Téléphone *</label>
-                    <input type="tel" id="customerPhone" name="customerPhone" required>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78">
                 </div>
                 
-                <div class="form-field">
-                    <label for="customerAddress">Adresse de livraison *</label>
-                    <textarea id="customerAddress" name="customerAddress" required placeholder="Adresse complète avec ville et code postal"></textarea>
-                </div>
-                
-                <div class="form-field">
-                    <label for="customerNotes">Notes de commande (optionnel)</label>
-                    <textarea id="customerNotes" name="customerNotes" placeholder="Instructions spéciales, préférences de livraison, etc."></textarea>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin: 1rem 0;">
+                    <h4>Résumé de la commande :</h4>
+                    <div id="orderSummary"></div>
+                    <div id="orderTotal" style="font-weight: bold; margin-top: 0.5rem;"></div>
                 </div>
                 
                 <div class="form-actions">
-                    <button type="button" class="btn-secondary" onclick="closeCheckoutModal()">Annuler</button>
-                    <button type="submit" class="btn">Confirmer la commande</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelCheckout()">Annuler</button>
+                    <button type="submit" class="btn btn-success">Confirmer</button>
                 </div>
             </form>
         </div>
-        </section>
+    </div>
 
         <!-- Section Agenda -->
         <section id="agenda" class="section">
@@ -702,7 +675,7 @@
                     </div>
                 </div>
 
-                <!-- Horaires
+                <Horaires>
                 <div>
                     <h3 style="color: #e74c3c; margin-bottom: 1rem;">⏰ Horaires</h3>
                     <div style="margin-bottom: 1rem;">
@@ -710,24 +683,8 @@
                         <strong>Samedi :</strong> 8h00 - 12h00<br>
                         <strong>Dimanche :</strong> Fermé
                     </div>
-                    
-                    <h4 style="color: #f39c12; margin-top: 1.5rem;">📝 Formulaire de contact</h4>
-                    <form onsubmit="submitContact(event)" style="margin-top: 1rem;">
-                        <div style="margin-bottom: 1rem;">
-                            <input type="text" placeholder="Nom complet" required style="width: 100%; padding: 0.5rem; border: none; border-radius: 5px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <input type="email" placeholder="Email" required style="width: 100%; padding: 0.5rem; border: none; border-radius: 5px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <textarea placeholder="Votre message" rows="3" required style="width: 100%; padding: 0.5rem; border: none; border-radius: 5px; resize: vertical;"></textarea>
-                        </div>
-                        <button type="submit" style="background: #e74c3c; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer;">
-                            Envoyer
-                        </button>
-                    </form>
-                </div> -->
-
+                </div> 
+</Horaires>
                 <!-- Partenaires et liens -->
                 <div>
                     <h3 style="color: #e74c3c; margin-bottom: 1rem;">🤝 Nos Partenaires</h3>
@@ -742,15 +699,6 @@
                             🌍 Office de Tourisme Régional
                         </div>
                     </div>
- <!-- Partenaires et liens 
-                    <h4 style="color: #f39c12; margin-bottom: 1rem;">🔗 Liens Rapides</h4>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <a href="#" onclick="showSection('documentaire')" style="color: #3498db; text-decoration: none;">🎬 Documentaire</a>
-                        <a href="#" onclick="showSection('galerie')" style="color: #3498db; text-decoration: none;">📸 Galerie</a>
-                        <a href="#" onclick="showSection('itineraires')" style="color: #3498db; text-decoration: none;">🗺️ Itinéraires</a>
-                        <a href="#" onclick="showSection('store')" style="color: #3498db; text-decoration: none;">🛍️ Store</a>
-                        <a href="#" onclick="showSection('agenda')" style="color: #3498db; text-decoration: none;">📅 Agenda</a>
-                    </div>-->
                 </div>
             </div>
 

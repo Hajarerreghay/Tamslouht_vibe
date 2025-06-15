@@ -166,82 +166,175 @@ function downloadPDF() {
 }
 
 // Fonctions du store
-function filterProducts(category) {
-    const products = document.querySelectorAll('.product-card');
-    products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) {
-            product.style.display = 'block';
-        } else {
-            product.style.display = 'none';
+// Base de données des produits
+        const products = {
+            'vase-terre-cuite-1': { name: 'Vase en terre cuite', price: 350 },
+            'vase-terre-cuite-2': { name: 'Vase en terre cuite', price: 300 },
+            'tapis-berbere-1': { name: 'Tapis berbère authentique', price: 1000 },
+            'tapis-berbere-2': { name: 'Tapis berbère authentique', price: 1200 },
+            'huile-olive': { name: 'Huile d\'olive pure', price: 150 },
+            'fantasia-1': { name: 'Produit de fantasia', price: 3000 },
+            'fantasia-2': { name: 'Produit de fantasia', price: 3000 },
+            'fantasia-3': { name: 'Produit de fantasia', price: 3000 },
+            'fantasia-4': { name: 'Produit de fantasia', price: 3000 },
+            'service-the': { name: 'Service à thé traditionnel', price: 450 }
+        };
+
+        // Fonctions du store
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
         }
-    });
-}
 
-function addToCart(productId) {
-    const products = {
-        'vase-terre-cuite': { name: 'Vase en terre cuite', price: 350 },
-        'tapis-berbere': { name: 'Tapis berbère authentique', price: 1200 },
-        'bracelet-argent': { name: 'Bracelet en argent gravé', price: 280 },
-        'huile-argan': { name: 'Huile d\'argan pure', price: 150 },
-        'miel-montagne': { name: 'Miel de montagne', price: 80 },
-        'service-the': { name: 'Service à thé traditionnel', price: 450 }
-    };
+        function addToCart(productId) {
+            const product = products[productId];
+            if (product) {
+                cart.push({ id: productId, ...product });
+                updateCart();
+                showNotification(`${product.name} ajouté au panier !`, 'success');
+            }
+        }
 
-    const product = products[productId];
-    if (product) {
-        cart.push({ id: productId, ...product });
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            if (cartCount) cartCount.textContent = cart.length;
+
+            if (cart.length === 0) {
+                if (cartItems) cartItems.innerHTML = '<p>Votre panier est vide</p>';
+                if (cartTotal) cartTotal.textContent = '';
+                if (checkoutBtn) checkoutBtn.style.display = 'none';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                html += `<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <span>${item.name}</span>
+                    <span>${item.price} MAD</span>
+                    <button onclick="removeFromCart(${index})" style="background: #ff4757; color: white; border: none; border-radius: 3px; padding: 0.2rem 0.5rem; cursor: pointer;">×</button>
+                </div>`;
+                total += item.price;
+            });
+
+            if (cartItems) cartItems.innerHTML = html;
+            if (cartTotal) cartTotal.textContent = `Total: ${total} MAD`;
+            if (checkoutBtn) checkoutBtn.style.display = 'inline-block';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+            showNotification('Article retiré du panier', 'info');
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            
+            // Afficher le modal
+            const modal = document.getElementById('checkoutModal');
+            modal.style.display = 'block';
+            
+            // Mettre à jour le résumé de commande
+            updateOrderSummary();
+            
+            // Focus sur le premier champ
+            document.getElementById('firstName').focus();
+        }
+
+        function updateOrderSummary() {
+            const orderSummary = document.getElementById('orderSummary');
+            const orderTotal = document.getElementById('orderTotal');
+            
+            let html = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                html += `<div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                    <span>${item.name}</span>
+                    <span>${item.price} MAD</span>
+                </div>`;
+                total += item.price;
+            });
+            
+            orderSummary.innerHTML = html;
+            orderTotal.textContent = `Total: ${total} MAD`;
+        }
+
+        function cancelCheckout() {
+            const modal = document.getElementById('checkoutModal');
+            modal.style.display = 'none';
+            
+            // Réinitialiser le formulaire
+            document.getElementById('checkoutForm').reset();
+        }
+
+        // Gestionnaire de soumission du formulaire
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupérer les données du formulaire
+            const formData = new FormData(this);
+            const orderData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                address: formData.get('address'),
+                phone: formData.get('phone'),
+                items: cart,
+                total: cart.reduce((sum, item) => sum + item.price, 0)
+            };
+            
+            // Simuler la soumission de commande
+            showNotification('Traitement de votre commande...', 'info');
+            
+            setTimeout(() => {
+                // Fermer le modal
+                cancelCheckout();
+                
+                // Vider le panier
+                cart = [];
+                updateCart();
+                
+                // Confirmation
+                showNotification(`Merci ${orderData.firstName} ! Votre commande a été confirmée. Vous recevrez un email de confirmation à ${orderData.email}.`, 'success');
+                
+                // Ici vous pourriez envoyer les données à votre serveur
+                console.log('Données de commande:', orderData);
+            }, 2000);
+        });
+
+        // Fermer le modal en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const modal = document.getElementById('checkoutModal');
+            if (event.target === modal) {
+                cancelCheckout();
+            }
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 4000);
+        }
+
+        // Initialiser le panier au chargement
         updateCart();
-        showNotification(`${product.name} ajouté au panier !`, 'success');
-    }
-}
-
-function updateCart() {
-    const cartCount = document.getElementById('cartCount');
-    const cartItems = document.getElementById('cartItems');
-    const cartTotal = document.getElementById('cartTotal');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-
-    if (cartCount) cartCount.textContent = cart.length;
-
-    if (cart.length === 0) {
-        if (cartItems) cartItems.innerHTML = '<p>Votre panier est vide</p>';
-        if (cartTotal) cartTotal.textContent = '';
-        if (checkoutBtn) checkoutBtn.style.display = 'none';
-        return;
-    }
-
-    let html = '';
-    let total = 0;
-    cart.forEach((item, index) => {
-        html += `<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <span>${item.name}</span>
-            <span>${item.price} MAD</span>
-            <button onclick="removeFromCart(${index})" style="background: #ff4757; color: white; border: none; border-radius: 3px; padding: 0.2rem 0.5rem; cursor: pointer;">×</button>
-        </div>`;
-        total += item.price;
-    });
-
-    if (cartItems) cartItems.innerHTML = html;
-    if (cartTotal) cartTotal.textContent = `Total: ${total} MAD`;
-    if (checkoutBtn) checkoutBtn.style.display = 'inline-block';
-}
-
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-    showNotification('Article retiré du panier', 'info');
-}
-
-function checkout() {
-    if (cart.length === 0) return;
-    
-    showNotification('Redirection vers le paiement sécurisé...', 'info');
-    setTimeout(() => {
-        cart = [];
-        updateCart();
-        showNotification('Commande confirmée ! Vous recevrez un email de confirmation.', 'success');
-    }, 2000);
-}
 
 // Fonctions du calendrier
 function generateCalendar() {
