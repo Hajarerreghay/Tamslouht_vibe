@@ -539,3 +539,175 @@ document.addEventListener('keydown', function(e) {
 
 console.log('🚀 TAMESLOUHT VIBES - Système optimisé chargé et opérationnel !');
 
+ // Stockage persistant des commentaires avec données d'exemple
+        let comments = [
+            {
+                id: 1640995200000,
+                name: "Hajar ERREGHAY",
+                email: "hajar@gmail.com",
+                text: "Un documentaire fascinant qui capture l'essence de notre patrimoine culturel. La qualité de la narration et les témoignages sont particulièrement touchants.",
+                date: new Date(2025, 5, 14, 14, 30).toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            },
+            {
+                id: 1640908800000,
+                name: "Fatima Zahra",
+                email: "fatima@gmail.com",
+                text: "Merci pour ce magnifique travail de préservation. C'est important de garder vivante la mémoire de nos ancêtres et de transmettre ces valeurs aux nouvelles générations.",
+                date: new Date(2025, 5, 14, 16, 45).toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            },
+            {
+                id: 1640822400000,
+                name: "Achraf el",
+                email: "achraf@gamil.com",
+                text: "Excellente initiative ! Ce type de documentaire est essentiel pour préserver notre identité culturelle. J'espère voir plus de productions similaires.",
+                date: new Date(2025, 5, 15, 10, 20).toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            }
+        ];
+
+        // Fonction pour charger les commentaires depuis la simulation de stockage
+        function loadComments() {
+            // Dans un vrai environnement, vous pourriez utiliser:
+            // const savedComments = localStorage.getItem('documentaryComments');
+            // if (savedComments) {
+            //     comments = JSON.parse(savedComments);
+            // }
+            
+            displayComments();
+        }
+
+        // Fonction pour sauvegarder les commentaires
+        function saveComments() {
+            // Dans un vrai environnement, vous pourriez utiliser:
+            // localStorage.setItem('documentaryComments', JSON.stringify(comments));
+            
+            // Pour cette démonstration, nous gardons les commentaires en mémoire
+            console.log('Commentaires sauvegardés:', comments.length);
+        }
+
+        function addComment() {
+            const userName = document.getElementById('userName').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
+            const commentText = document.getElementById('commentText').value.trim();
+
+            // Validation
+            if (!userName || !commentText) {
+                alert('Veuillez remplir au moins votre nom et votre commentaire.');
+                return;
+            }
+
+            // Créer le commentaire
+            const comment = {
+                id: Date.now(),
+                name: userName,
+                email: userEmail,
+                text: commentText,
+                date: new Date().toLocaleString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            // Ajouter au début de la liste
+            comments.unshift(comment);
+
+            // Sauvegarder les commentaires
+            saveComments();
+
+            // Réinitialiser le formulaire
+            document.getElementById('userName').value = '';
+            document.getElementById('userEmail').value = '';
+            document.getElementById('commentText').value = '';
+
+            // Mettre à jour l'affichage
+            displayComments();
+
+            // Animation de confirmation
+            const btn = document.querySelector('.submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Commentaire ajouté !';
+            btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
+            }, 2000);
+        }
+
+        function displayComments() {
+            const container = document.getElementById('commentsContainer');
+            const countElement = document.getElementById('commentCount');
+            
+            // Mettre à jour le compteur
+            countElement.textContent = comments.length;
+            
+            if (comments.length === 0) {
+                container.innerHTML = `
+                    <div class="no-comments">
+                        Aucun commentaire pour le moment. Soyez le premier à partager votre avis !
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = comments.map(comment => `
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">${escapeHtml(comment.name)}</span>
+                        <span class="comment-date">${comment.date}</span>
+                    </div>
+                    <div class="comment-text">${escapeHtml(comment.text)}</div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Permettre la soumission avec Enter (Ctrl+Enter dans le textarea)
+        document.getElementById('commentText').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                addComment();
+            }
+        });
+
+        // Animation d'entrée
+        window.addEventListener('load', function() {
+            const section = document.querySelector('.section');
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease';
+            
+            setTimeout(() => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Charger les commentaires au démarrage
+            loadComments();
+        });
+   
+    

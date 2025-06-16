@@ -183,7 +183,7 @@
                 <li><a href="#" onclick="showSection('galerie')">Galerie</a></li>
                 <li><a href="#" onclick="showSection('itineraires')">Itinéraires</a></li>
                 <li><a href="#" onclick="showSection('store')">Store</a></li>
-                <li><a href="#" onclick="showSection('atelier')">Ateliers</a></li>
+                <li><a href="#" onclick="showSection('activites')">Activites</a></li>
                 <!--li><a href="#" onclick="showSection('')">scoutisme</a></li-->
                 <li><a href="#" onclick="showSection('agenda')">Agenda</a></li>
             </ul>
@@ -222,44 +222,97 @@
                 </div>
             </div>
         </section>
-        <!-- Section Atelier -->
-      <section id="atelier" class="section">      
+      <section id="activites" class="section">
         <div class="container">
-        <h1> 🎨Ateliers d'Art Traditionnel</h2>
-        <p>Découvrez l'héritage artistique de Tameslouht à travers nos ateliers dédiés au portrait traditionnel et au tissage berbère. Participez à des expériences authentiques guidées par nos maîtres artisans locaux.</p>
+            <h1>🌟 Activités Culturelles de Tameslouht</h1>
+            <p>Découvrez l'héritage culturel de Tameslouht à travers nos trois pôles d'activités : ateliers d'art traditionnel, scoutisme culturel et médiation culturelle. Participez à des expériences authentiques guidées par nos experts locaux.</p>
+        </div>
+        
+        <div class="container">
+            <div class="grid grid-3">
+                
+                <!-- Rubrique 1: Ateliers -->
+                <div class="card">
+                    <h3>🎨 Ateliers d'Art Traditionnel</h3>
+                    <p>Découvrez l'art du portrait traditionnel marocain, le tissage berbère et l'artisanat local. Apprenez les techniques ancestrales avec nos maîtres artisans dans des ateliers pratiques et authentiques.</p>
+                    <a href="#" class="btn" onclick="showAteliers()">Découvrir les ateliers</a>
+                </div>
+                
+                <!-- Rubrique 2: Scoutisme culturel -->
+                <div class="card">
+                    <h3>🏕️ Scoutisme Culturel</h3>
+                    <p>Participez à nos activités de scoutisme culturel alliant découverte du patrimoine local, randonnées éducatives et apprentissage des traditions berbères dans un esprit d'aventure et de respect de l'environnement.</p>
+                    <a href="#" class="btn" onclick="showScoutisme()">Rejoindre le groupe</a>
+                </div>
+                
+                <!-- Rubrique 3: Médiation culturelle -->
+                <div class="card">
+                    <h3>🤝 Médiation Culturelle</h3>
+                    <p>Explorez nos programmes de médiation culturelle favorisant les échanges interculturels, la préservation du patrimoine oral et écrit, et le dialogue entre les générations autour des traditions de Tameslouht.</p>
+                    <a href="#" class="btn" onclick="showMediation()">En savoir plus</a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Section détaillée des ateliers -->
+    <section id="ateliers" class="section" style="display: none;">
+        <div class="container">
+            <h1>🎨 Ateliers d'Art Traditionnel</h1>
+            <p>Découvrez l'héritage artistique de Tameslouht à travers nos ateliers dédiés au portrait traditionnel et au tissage berbère. Participez à des expériences authentiques guidées par nos maîtres artisans locaux.</p>
         </div>   
-             <div>
-    <div class="grid grid-3" style="margin-top: 3rem;">                 
-        <div class="card">                     
-            <h3>🎨 Portraits Traditionnels</h3>                     
-            <p>Découvrez l'art du portrait traditionnel marocain et les techniques ancestrales de nos artisans locaux.</p>                     
-            <a href="#" class="btn">Plus d'informations</a>  
-            <!--a href="#" class="btn" onclick="showSection('portraits')">Explorer</a-->                 
-        </div>                 
-        <div class="card">                     
-            <h3>🧵 Atelier de Tissage</h3>                     
-            <p>Apprenez les secrets du tissage berbère et participez à nos ateliers pratiques avec les maîtres tisserands.</p>                     
-            <a href="#" class="btn">Plus d'informations</a>                 
-        </div>                 
-        <div class="card">                     
-            <h3>🏺 Artisanat Local</h3>                     
-            <p>Explorez notre collection d'œuvres artisanales alliant portrait et textile dans la tradition de Tameslouht.</p>                     
-            <a href="#" class="btn">Plus d'informations</a>                 
-        </div>           
-        <!--div class="card">                     
-            <h3>🧵 Atelier de Tissage</h3>                     
-            <p>Apprenez les secrets du tissage berbère et participez à nos ateliers pratiques avec les maîtres tisserands.</p>                     
-            <a href="#" class="btn">Plus d'informations</a>                 
-        </div-->                 
-      
-        <div class="card">
-    <h3>🍽️ Cooking class</h3>
-    <p>Découvrez les saveurs authentiques de Tameslouht à travers nos plats traditionnels et spécialités culinaires transmises de génération en génération.</p>
-    <a href="#" class="btn">Plus d'informations</a>
-         </div>     
-    </div>
-    </div>          
-</section>
+        
+        <div class="container">
+            <div class="grid grid-3" style="margin-top: 3rem;">                 
+                <div class="card">                     
+                    <h3>🎨 Portraits Traditionnels</h3>                     
+                    <p>Découvrez l'art du portrait traditionnel marocain et les techniques ancestrales de nos artisans locaux.</p>                     
+                    <a href="#" class="btn">Plus d'informations</a>
+                </div>                 
+                <div class="card">                     
+                    <h3>🧵 Atelier de Tissage</h3>                     
+                    <p>Apprenez les secrets du tissage berbère et participez à nos ateliers pratiques avec les maîtres tisserands.</p>                     
+                    <a href="#" class="btn">Plus d'informations</a>                 
+                </div>                 
+                <div class="card">                     
+                    <h3>🏺 Artisanat Local</h3>                     
+                    <p>Explorez notre collection d'œuvres artisanales alliant portrait et textile dans la tradition de Tameslouht.</p>                     
+                    <a href="#" class="btn">Plus d'informations</a>                 
+                </div>           
+                <div class="card">
+                    <h3>🍽️ Cooking Class</h3>
+                    <p>Découvrez les saveurs authentiques de Tameslouht à travers nos plats traditionnels et spécialités culinaires transmises de génération en génération.</p>
+                    <a href="#" class="btn">Plus d'informations</a>
+                </div>     
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn" onclick="showActivites()" style="background: #6c757d;">Retour aux activités</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Scoutisme (à développer) -->
+    <section id="scoutisme" class="section" style="display: none;">
+        <div class="container">
+            <h1>🏕️ Scoutisme Culturel</h1>
+            <p>Contenu du scoutisme culturel à développer...</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn" onclick="showActivites()" style="background: #6c757d;">Retour aux activités</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Médiation (à développer) -->
+    <section id="mediation" class="section" style="display: none;">
+        <div class="container">
+            <h1>🤝 Médiation Culturelle</h1>
+            <p>Contenu de la médiation culturelle à développer...</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn" onclick="showActivites()" style="background: #6c757d;">Retour aux activités</a>
+            </div>
+        </div>
+    </section>
 
        <!-- Section Documentaire -->
 <section id="documentaire" class="section">
@@ -614,18 +667,7 @@
                         <p>Célébration spirituelle et culturelle traditionnelle.</p>
                         <button class="btn">Plus d'infos</button>
                     </div>
-                   <!-- <div class="card">
-                        <h4>موسم العوينة</h4>
-                        <p><strong>📅 24-27 Juin 2025</strong></p>
-                        <p>Célébration spirituelle et culturelle traditionnelle.</p>
-                        <button class="btn">Plus d'infos</button>
-                    </div>
-                    <div class="card">
-                        <h4>موسم اقريش</h4>
-                        <p><strong>📅 27-29 Juin 2025</strong></p>
-                        <p>Célébration spirituelle et culturelle traditionnelle.</p>
-                        <button class="btn">Plus d'infos</button>
-                    </div>-->
+                
                     <div class="card">
                         <h4>السوق الاسبوعي</h4>
                         <p><strong>📅 Tous les vendredis</strong></p>
@@ -715,177 +757,7 @@
         <span id="notificationText"></span>
     </div>
     <script src="script.js"></script>
-     <script>
-        // Stockage persistant des commentaires avec données d'exemple
-        let comments = [
-            {
-                id: 1640995200000,
-                name: "Hajar ERREGHAY",
-                email: "hajar@gmail.com",
-                text: "Un documentaire fascinant qui capture l'essence de notre patrimoine culturel. La qualité de la narration et les témoignages sont particulièrement touchants.",
-                date: new Date(2025, 5, 14, 14, 30).toLocaleString('fr-FR', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            },
-            {
-                id: 1640908800000,
-                name: "Fatima Zahra",
-                email: "fatima@gmail.com",
-                text: "Merci pour ce magnifique travail de préservation. C'est important de garder vivante la mémoire de nos ancêtres et de transmettre ces valeurs aux nouvelles générations.",
-                date: new Date(2025, 5, 14, 16, 45).toLocaleString('fr-FR', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            },
-            {
-                id: 1640822400000,
-                name: "Achraf el",
-                email: "achraf@gamil.com",
-                text: "Excellente initiative ! Ce type de documentaire est essentiel pour préserver notre identité culturelle. J'espère voir plus de productions similaires.",
-                date: new Date(2025, 5, 15, 10, 20).toLocaleString('fr-FR', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            }
-        ];
-
-        // Fonction pour charger les commentaires depuis la simulation de stockage
-        function loadComments() {
-            // Dans un vrai environnement, vous pourriez utiliser:
-            // const savedComments = localStorage.getItem('documentaryComments');
-            // if (savedComments) {
-            //     comments = JSON.parse(savedComments);
-            // }
-            
-            displayComments();
-        }
-
-        // Fonction pour sauvegarder les commentaires
-        function saveComments() {
-            // Dans un vrai environnement, vous pourriez utiliser:
-            // localStorage.setItem('documentaryComments', JSON.stringify(comments));
-            
-            // Pour cette démonstration, nous gardons les commentaires en mémoire
-            console.log('Commentaires sauvegardés:', comments.length);
-        }
-
-        function addComment() {
-            const userName = document.getElementById('userName').value.trim();
-            const userEmail = document.getElementById('userEmail').value.trim();
-            const commentText = document.getElementById('commentText').value.trim();
-
-            // Validation
-            if (!userName || !commentText) {
-                alert('Veuillez remplir au moins votre nom et votre commentaire.');
-                return;
-            }
-
-            // Créer le commentaire
-            const comment = {
-                id: Date.now(),
-                name: userName,
-                email: userEmail,
-                text: commentText,
-                date: new Date().toLocaleString('fr-FR', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            };
-
-            // Ajouter au début de la liste
-            comments.unshift(comment);
-
-            // Sauvegarder les commentaires
-            saveComments();
-
-            // Réinitialiser le formulaire
-            document.getElementById('userName').value = '';
-            document.getElementById('userEmail').value = '';
-            document.getElementById('commentText').value = '';
-
-            // Mettre à jour l'affichage
-            displayComments();
-
-            // Animation de confirmation
-            const btn = document.querySelector('.submit-btn');
-            const originalText = btn.textContent;
-            btn.textContent = '✓ Commentaire ajouté !';
-            btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
-            
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
-            }, 2000);
-        }
-
-        function displayComments() {
-            const container = document.getElementById('commentsContainer');
-            const countElement = document.getElementById('commentCount');
-            
-            // Mettre à jour le compteur
-            countElement.textContent = comments.length;
-            
-            if (comments.length === 0) {
-                container.innerHTML = `
-                    <div class="no-comments">
-                        Aucun commentaire pour le moment. Soyez le premier à partager votre avis !
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = comments.map(comment => `
-                <div class="comment">
-                    <div class="comment-header">
-                        <span class="comment-author">${escapeHtml(comment.name)}</span>
-                        <span class="comment-date">${comment.date}</span>
-                    </div>
-                    <div class="comment-text">${escapeHtml(comment.text)}</div>
-                </div>
-            `).join('');
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // Permettre la soumission avec Enter (Ctrl+Enter dans le textarea)
-        document.getElementById('commentText').addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === 'Enter') {
-                addComment();
-            }
-        });
-
-        // Animation d'entrée
-        window.addEventListener('load', function() {
-            const section = document.querySelector('.section');
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'all 0.6s ease';
-            
-            setTimeout(() => {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }, 100);
-            
-            // Charger les commentaires au démarrage
-            loadComments();
-        });
-    </script>
+   
+       
 </body>
 </html>
