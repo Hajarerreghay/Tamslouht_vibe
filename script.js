@@ -10,7 +10,8 @@ function showSection(sectionName) {
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
     });
-    
+
+
     // Afficher la section demandée
     document.getElementById(sectionName).classList.add('active');
     
@@ -32,6 +33,7 @@ function showSection(sectionName) {
         generateCalendar();
     }
 }
+
 
 // Système de notifications
 function showNotification(message, type = 'success') {
@@ -710,4 +712,23 @@ console.log('🚀 TAMESLOUHT VIBES - Système optimisé chargé et opérationnel
             loadComments();
         });
    
-    
+
+//Fonctions spécifiques pour les sous-sections des activités culturelles
+function showAteliers() {
+    showSection('ateliers');
+}
+
+function showScoutisme() {
+    showSection('scoutisme');
+}
+
+function showMediation() {
+    showSection('mediation');
+}
+
+function showActivites() {
+    showSection('activites');
+}
+
+
+

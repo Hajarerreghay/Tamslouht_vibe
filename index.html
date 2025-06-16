@@ -218,7 +218,7 @@
                     <h3>🗺️ Circuits Touristiques</h3>
                     <p>Explorez nos itinéraires thématiques pour une découverte complète de la région.</p>
                     <a href="#" class="btn" onclick="showSection('itineraires')">Découvrir</a>
-                    <!--a href="#" class="btn" onclick="showSection('itineraires')">Découvrir</a-->
+                    
                 </div>
             </div>
         </section>
@@ -235,21 +235,21 @@
                 <div class="card">
                     <h3>🎨 Ateliers d'Art Traditionnel</h3>
                     <p>Découvrez l'art du portrait traditionnel marocain, le tissage berbère et l'artisanat local. Apprenez les techniques ancestrales avec nos maîtres artisans dans des ateliers pratiques et authentiques.</p>
-                    <a href="#" class="btn" onclick="showAteliers()">Découvrir les ateliers</a>
+                    <a href="#" class="btn" onclick="showAteliers('ateliers')">Découvrir les ateliers</a>
                 </div>
                 
                 <!-- Rubrique 2: Scoutisme culturel -->
                 <div class="card">
                     <h3>🏕️ Scoutisme Culturel</h3>
                     <p>Participez à nos activités de scoutisme culturel alliant découverte du patrimoine local, randonnées éducatives et apprentissage des traditions berbères dans un esprit d'aventure et de respect de l'environnement.</p>
-                    <a href="#" class="btn" onclick="showScoutisme()">Rejoindre le groupe</a>
+                    <a href="#" class="btn" onclick="showScoutisme('scoutisme')">Rejoindre le groupe</a>
                 </div>
                 
                 <!-- Rubrique 3: Médiation culturelle -->
                 <div class="card">
                     <h3>🤝 Médiation Culturelle</h3>
                     <p>Explorez nos programmes de médiation culturelle favorisant les échanges interculturels, la préservation du patrimoine oral et écrit, et le dialogue entre les générations autour des traditions de Tameslouht.</p>
-                    <a href="#" class="btn" onclick="showMediation()">En savoir plus</a>
+                    <a href="#" class="btn" onclick="showMediation('mediation')">En savoir plus</a>
                 </div>
                 
             </div>
@@ -257,7 +257,7 @@
     </section>
 
     <!-- Section détaillée des ateliers -->
-    <section id="ateliers" class="section" style="display: none;">
+    <section id="ateliers" class="section" >
         <div class="container">
             <h1>🎨 Ateliers d'Art Traditionnel</h1>
             <p>Découvrez l'héritage artistique de Tameslouht à travers nos ateliers dédiés au portrait traditionnel et au tissage berbère. Participez à des expériences authentiques guidées par nos maîtres artisans locaux.</p>
@@ -293,7 +293,7 @@
     </section>
 
     <!-- Section Scoutisme (à développer) -->
-    <section id="scoutisme" class="section" style="display: none;">
+    <section id="scoutisme" class="section" >
         <div class="container">
             <h1>🏕️ Scoutisme Culturel</h1>
             <p>Contenu du scoutisme culturel à développer...</p>
@@ -304,7 +304,7 @@
     </section>
 
     <!-- Section Médiation (à développer) -->
-    <section id="mediation" class="section" style="display: none;">
+    <section id="mediation" class="section" >
         <div class="container">
             <h1>🤝 Médiation Culturelle</h1>
             <p>Contenu de la médiation culturelle à développer...</p>
@@ -756,8 +756,6 @@
     <div id="notification" class="notification">
         <span id="notificationText"></span>
     </div>
-    <script src="script.js"></script>
-   
-       
+    <script src="script.js"></script>    
 </body>
 </html>
