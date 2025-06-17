@@ -734,5 +734,100 @@ function showActivites() {
     showSection('activites');
 }
 
+// Données des ateliers
+       const ateliersData = {
+            portraits: {
+                title: "🎨 Portraits Traditionnels",
+                image: "./Atelier/Portraits Traditionnels.jpg",
+                description: "Plongez dans l'univers fascinant du portrait traditionnel marocain avec nos maîtres artisans. Cet atelier vous permettra d'apprendre les techniques ancestrales de dessin et de peinture utilisées depuis des générations à Tameslouht. Vous découvrirez l'art de capturer l'essence et l'âme des sujets à travers des méthodes traditionnelles, en utilisant des pigments naturels et des outils authentiques. Nos artisans vous guideront pas à pas dans la création de votre propre œuvre, tout en vous transmettant l'histoire et la symbolique de cet art millénaire.",
+                prices: [
+                    { label: "Atelier 2h (débutant)", value: "250 DH" },
+                    { label: "Atelier 4h (intermédiaire)", value: "450 DH" },
+                    { label: "Stage complet 3 jours", value: "1200 DH" },
+                    { label: "Matériel inclus", value: "Oui" }
+                ]
+            },
+            tissage: {
+                title: "🧵 Atelier de Tissage",
+                image: "./Atelier/tissage.jpg",
+                description: "Initiez-vous à l'art ancestral du tissage berbère avec nos maîtres tisserands de Tameslouht. Découvrez les secrets des motifs traditionnels, apprenez à manipuler les fils de laine colorés et créez votre propre pièce textile authentique. Cet atelier vous plongera dans l'univers des textiles marocains, de la préparation des fils jusqu'au tissage final. Vous apprendrez les techniques de base du métier à tisser traditionnel et repartirez avec votre création personnelle, un souvenir unique de votre passage dans notre village artisanal.",
+                prices: [
+                    { label: "Initiation 3h", value: "320 DH" },
+                    { label: "Atelier complet 6h", value: "580 DH" },
+                    { label: "Formation 2 jours", value: "950 DH" },
+                    { label: "Matériaux fournis", value: "Inclus" }
+                ]
+            },
+            artisanat: {
+                title: "🏺 Artisanat Local",
+                image: "./Atelier/Artisanat Local.jpg",
+                description: "Explorez la richesse de l'artisanat traditionnel de Tameslouht à travers cet atelier polyvalent qui combine plusieurs techniques artistiques locales. Découvrez le travail de la céramique, la sculpture sur bois, la marqueterie et bien d'autres savoir-faire ancestraux. Nos artisans locaux vous initieront aux gestes traditionnels et vous aideront à créer vos propres objets d'art. Cet atelier unique vous permettra de comprendre la diversité et la richesse de notre patrimoine artisanal tout en développant vos compétences créatives.",
+                prices: [
+                    { label: "Découverte 2h", value: "280 DH" },
+                    { label: "Atelier créatif 5h", value: "520 DH" },
+                    { label: "Stage intensif 4 jours", value: "1800 DH" },
+                    { label: "Outils et matériaux", value: "Fournis" }
+                ]
+            },
+            cooking: {
+                title: "🍽️ Cooking Class",
+                image: "./Atelier/Cooking Class.jpg",
+                description: "Embarquez pour un voyage culinaire authentique au cœur des saveurs de Tameslouht. Nos cours de cuisine vous feront découvrir les secrets des plats traditionnels marocains transmis de mère en fille depuis des générations. Apprenez à préparer le tajine parfait, maîtrisez l'art du couscous traditionnel, découvrez les épices locales et leurs utilisations. Dans notre cuisine traditionnelle, vous préparerez un repas complet que vous dégusterez ensuite en famille dans une ambiance conviviale et chaleureuse, accompagné de thé à la menthe et de pâtisseries maison.",
+                prices: [
+                    { label: "Cours 3h avec repas", value: "350 DH" },
+                    { label: "Atelier pâtisserie 2h", value: "220 DH" },
+                    { label: "Stage culinaire 2 jours", value: "650 DH" },
+                    { label: "Repas et recettes", value: "Inclus" }
+                ]
+            }
+        };
 
+        function openModal(atelierId) {
+            const atelier = ateliersData[atelierId];
+            const modal = document.getElementById('atelierModal');
+            
+            document.getElementById('modalTitle').textContent = atelier.title;
+            document.getElementById('modalImage').src = atelier.image;
+            document.getElementById('modalDescription').textContent = atelier.description;
+            
+            // Générer les prix
+            const pricesHTML = atelier.prices.map(price => 
+                `<div class="price-item">
+                    <span class="price-label">${price.label}</span>
+                    <span class="price-value">${price.value}</span>
+                </div>`
+            ).join('');
+            
+            document.getElementById('modalPrices').innerHTML = pricesHTML;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('atelierModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function bookAtelier() {
+            alert('Merci pour votre intérêt ! Nous vous contacterons bientôt pour finaliser votre réservation.');
+            closeModal();
+        }
+
+        
+        // Fermer le modal en cliquant à l'extérieur
+        window.onclick = function(event) {
+            const modal = document.getElementById('atelierModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Fermer le modal avec la touche Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
 

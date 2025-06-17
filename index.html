@@ -257,34 +257,39 @@
     </section>
 
     <!-- Section détaillée des ateliers -->
-    <section id="ateliers" class="section" >
+    <section id="ateliers" class="section">
         <div class="container">
             <h1>🎨 Ateliers d'Art Traditionnel</h1>
             <p>Découvrez l'héritage artistique de Tameslouht à travers nos ateliers dédiés au portrait traditionnel et au tissage berbère. Participez à des expériences authentiques guidées par nos maîtres artisans locaux.</p>
-        </div>   
+        </div>
         
         <div class="container">
-            <div class="grid grid-3" style="margin-top: 3rem;">                 
-                <div class="card">                     
-                    <h3>🎨 Portraits Traditionnels</h3>                     
-                    <p>Découvrez l'art du portrait traditionnel marocain et les techniques ancestrales de nos artisans locaux.</p>                     
-                    <a href="#" class="btn">Plus d'informations</a>
-                </div>                 
-                <div class="card">                     
-                    <h3>🧵 Atelier de Tissage</h3>                     
-                    <p>Apprenez les secrets du tissage berbère et participez à nos ateliers pratiques avec les maîtres tisserands.</p>                     
-                    <a href="#" class="btn">Plus d'informations</a>                 
-                </div>                 
-                <div class="card">                     
-                    <h3>🏺 Artisanat Local</h3>                     
-                    <p>Explorez notre collection d'œuvres artisanales alliant portrait et textile dans la tradition de Tameslouht.</p>                     
-                    <a href="#" class="btn">Plus d'informations</a>                 
-                </div>           
+            <div class="grid grid-3" style="margin-top: 3rem;">
+                
+                <div class="card">
+                    <h3>🎨 Portraits Traditionnels</h3>
+                    <p>Découvrez l'art du portrait traditionnel marocain et les techniques ancestrales de nos artisans locaux.</p>
+                    <a href="#" class="btn" onclick="openModal('portraits')">Plus d'informations</a>
+                </div>
+                
+                <div class="card">
+                    <h3>🧵 Atelier de Tissage</h3>
+                    <p>Apprenez les secrets du tissage berbère et participez à nos ateliers pratiques avec les maîtres tisserands.</p>
+                    <a href="#" class="btn" onclick="openModal('tissage')">Plus d'informations</a>
+                </div>
+                
+                <div class="card">
+                    <h3>🏺 Artisanat Local</h3>
+                    <p>Explorez notre collection d'œuvres artisanales alliant portrait et textile dans la tradition de Tameslouht.</p>
+                    <a href="#" class="btn" onclick="openModal('artisanat')">Plus d'informations</a>
+                </div>
+                
                 <div class="card">
                     <h3>🍽️ Cooking Class</h3>
                     <p>Découvrez les saveurs authentiques de Tameslouht à travers nos plats traditionnels et spécialités culinaires transmises de génération en génération.</p>
-                    <a href="#" class="btn">Plus d'informations</a>
-                </div>     
+                    <a href="#" class="btn" onclick="openModal('cooking')">Plus d'informations</a>
+                </div>
+                
             </div>
             <div style="text-align: center; margin-top: 2rem;">
                 <a href="#" class="btn" onclick="showActivites()" style="background: #6c757d;">Retour aux activités</a>
@@ -292,6 +297,27 @@
         </div>
     </section>
 
+    <!-- Modal -->
+    <div id="atelierModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" class="modal-image" src="" alt="">
+                <div id="modalDescription" class="modal-description"></div>
+                <div class="price-section">
+                    <div class="price-title">💰 Tarifs</div>
+                    <div id="modalPrices"></div>
+                </div>
+                 <div class="contact-section">
+                    <p>Contactez-nous sur ce numéro :</p>
+                    <div class="phone-number">📞 0611696922</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Section Scoutisme (à développer) -->
     <section id="scoutisme" class="section" >
         <div class="container">
